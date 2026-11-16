@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="600" fill="#0b1424"/>
+  <g fill="none" stroke="#8b949e" stroke-opacity="0.45" stroke-width="3">
+    <circle cx="560" cy="300" r="110"/><circle cx="560" cy="300" r="60"/>
+    <path d="M560 160v60M560 380v60M420 300h60M640 300h60M461 201l42 42M617 357l42 42M659 201l-42 42M503 357l-42 42"/>
+  </g>
+  <circle cx="560" cy="300" r="14" fill="#168bff"/>
+  <text x="90" y="120" fill="#168bff" fill-opacity="0.4" font-size="90" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">部</text>
+</svg>

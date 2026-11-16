@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="راهنمای خواندن سایز لاستیک، گرید روغن و استانداردهای API و JASO" />
+    <title>راهنمای خرید | BAIKU | バイク</title>
+    <link rel="stylesheet" href="./src/css/output.css" />
+  </head>
+  <body class="overflow-x-hidden font-sans">
+    <!-- ================= هدر ================= -->
+    <header class="sticky top-0 z-30 w-full border-b border-bk-line bg-bk-black/90 backdrop-blur">
+      <div class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-x-4">
+        <!-- لوگو (راست در حالت RTL) -->
+        <a href="./index.html" class="flex items-center gap-x-2 shrink-0" aria-label="BAIKU - صفحه اصلی">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="13" stroke="#168BFF" stroke-width="2.5" />
+            <circle cx="16" cy="16" r="5" fill="#168BFF" />
+            <path d="M16 3v6M16 23v6M3 16h6M23 16h6" stroke="#00CFFF" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span class="flex flex-col leading-none">
+            <span class="ltr-text text-xl font-bold tracking-[0.18em]">BAIKU</span>
+            <span class="jp-text text-[10px] text-bk-blue mt-1 tracking-widest">バイク</span>
+          </span>
+        </a>
+
+        <!-- منوی اصلی (فقط دسکتاپ) -->
+        <nav class="hidden lg:flex items-center gap-x-8" aria-label="منوی اصلی">
+          <a href="./index.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">خانه</a>
+          <a href="./tires.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">لاستیک موتور</a>
+          <a href="./oils.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">روغن موتور</a>
+          <a href="./guide.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">راهنمای خرید</a>
+          <a href="./index.html#popular" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">پرفروش‌ها</a>
+          <a href="./index.html#about" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">درباره BAIKU</a>
+          <a href="./index.html#contact" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">تماس با ما</a>
+        </nav>
+
+        <!-- آیکن‌ها (چپ در حالت RTL) -->
+        <div class="flex items-center gap-x-1 sm:gap-x-2">
+          <button type="button" id="search-toggle" class="w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="جستجو" aria-expanded="false" aria-controls="search-bar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+          </button>
+          <a href="./wishlist.html" class="relative w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition" aria-label="علاقه‌مندی‌ها">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" /></svg>
+            <span data-wish-count class="hidden absolute top-0 left-0 min-w-4.5 h-4.5 px-1 rounded-full bg-bk-blue text-white text-[10px] font-bold leading-4.5 text-center">0</span>
+          </a>
+          <a href="./compare.html" class="relative hidden sm:flex w-10 h-10 items-center justify-center text-bk-white hover:text-bk-blue transition" aria-label="مقایسه">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h13M16 3l4 4-4 4M17 17H4M8 13l-4 4 4 4" /></svg>
+            <span data-compare-count class="hidden absolute top-0 left-0 min-w-4.5 h-4.5 px-1 rounded-full bg-bk-blue text-white text-[10px] font-bold leading-4.5 text-center">0</span>
+          </a>
+          <button type="button" data-open="login" class="w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="حساب کاربری">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
+          </button>
+          <button type="button" data-open="cart" class="relative w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="سبد خرید">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /><path d="M2 3h3l2.7 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 7H6" /></svg>
+            <!-- تعداد کالاهای سبد؛ panels.js مقدارش را پر می‌کند -->
+            <span data-cart-count class="hidden absolute top-0 left-0 min-w-4.5 h-4.5 px-1 rounded-full bg-bk-blue text-white text-[10px] font-bold leading-4.5 text-center">0</span>
+          </button>
+          <!-- دکمه‌ی منوی موبایل -->
+          <button type="button" id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- نوار جستجو (با آیکن ذره‌بین باز و بسته می‌شود) -->
+      <div id="search-bar" class="hidden border-t border-bk-line bg-bk-navy">
+        <form id="search-form" autocomplete="off" class="relative max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-3 flex gap-x-2" role="search">
+          <input id="search-input" type="search" class="bk-input" placeholder="جستجو بر اساس نام، برند، سایز لاستیک (مثلاً 90/90-17) یا گرید روغن (مثلاً 10W-40)" aria-label="جستجو" aria-controls="search-suggest" aria-expanded="false" />
+          <button type="submit" class="btn-primary h-11 px-5 text-sm shrink-0">جستجو</button>
+          <!-- لیست پیشنهادها (search.js پرش می‌کند) -->
+          <div id="search-suggest" class="hidden absolute top-full right-4 left-4 sm:right-6 sm:left-6 lg:right-8 lg:left-8 z-50 max-h-[70vh] overflow-y-auto bg-bk-navy border border-bk-blue/60 shadow-[0_12px_40px_rgba(0,0,0,0.6)]" role="listbox"></div>
+        </form>
+      </div>
+
+      <!-- منوی موبایل -->
+      <nav id="mobile-menu" class="hidden lg:hidden border-t border-bk-line bg-bk-black" aria-label="منوی موبایل">
+        <div class="px-4 py-3 flex flex-col">
+          <a href="./index.html" class="py-3 text-sm font-bold border-b border-bk-line">خانه</a>
+          <a href="./tires.html" class="py-3 text-sm font-bold border-b border-bk-line">لاستیک موتور</a>
+          <a href="./oils.html" class="py-3 text-sm font-bold border-b border-bk-line">روغن موتور</a>
+          <a href="./guide.html" class="py-3 text-sm font-bold border-b border-bk-line">راهنمای خرید</a>
+          <a href="./index.html#popular" class="py-3 text-sm font-bold border-b border-bk-line">پرفروش‌ها</a>
+          <a href="./index.html#about" class="py-3 text-sm font-bold border-b border-bk-line">درباره BAIKU</a>
+          <a href="./index.html#contact" class="py-3 text-sm font-bold border-b border-bk-line">تماس با ما</a>
+          <a href="./compare.html" class="py-3 text-sm font-bold">مقایسه‌ی محصولات</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="relative border-b border-bk-line bg-bk-navy overflow-hidden">
+        <div class="pattern-wave absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+          <nav aria-label="مسیر صفحه" class="text-xs text-bk-muted mb-4">
+            <a href="./index.html" class="hover:text-bk-blue transition">خانه</a>
+            <span class="mx-2">/</span>
+            <span class="text-bk-white">راهنمای خرید</span>
+          </nav>
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h1 class="text-2xl sm:text-4xl font-bold">راهنمای خرید</h1>
+              <p class="text-bk-muted text-sm sm:text-base leading-7 sm:leading-8 mt-3 max-w-2xl">سه نکته‌ای که قبل از خرید لاستیک و روغن باید بدانید. اطلاعات عمومی است و جای دفترچه‌ی راهنمای موتور شما را نمی‌گیرد.</p>
+            </div>
+            <span class="jp-text text-6xl sm:text-8xl text-bk-blue/25 leading-none select-none" aria-hidden="true">学</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 flex flex-col gap-y-6">
+        <article id="tire-size" class="scroll-mt-24 bk-card p-5 sm:p-8">
+          <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-x-3"><span class="speed-stripes" aria-hidden="true"></span>سایز لاستیک را چطور بخوانیم؟</h2>
+          <p class="text-sm leading-8 text-bk-muted mb-4">سایز روی دیواره‌ی لاستیک چاپ شده است؛ مثلاً <span class="ltr-text">90/90-17</span>. این عبارت سه بخش دارد:</p>          <table class="w-full mb-4"><tbody><tr class="border-b border-bk-line last:border-0"><td class="py-3 pl-4 font-bold text-bk-cyan whitespace-nowrap"><span class="ltr-text">90</span></td><td class="py-3 text-sm">عرض لاستیک به میلی‌متر</td></tr><tr class="border-b border-bk-line last:border-0"><td class="py-3 pl-4 font-bold text-bk-cyan whitespace-nowrap"><span class="ltr-text">/90</span></td><td class="py-3 text-sm">نسبت ارتفاع دیواره به عرض، به درصد (یعنی ارتفاع دیواره حدود ۹۰٪ عرض)</td></tr><tr class="border-b border-bk-line last:border-0"><td class="py-3 pl-4 font-bold text-bk-cyan whitespace-nowrap"><span class="ltr-text">-17</span></td><td class="py-3 text-sm">قطر رینگ به اینچ</td></tr></tbody></table>          <ul class="text-sm leading-8 text-bk-muted list-disc pr-5 mb-4 space-y-1"><li>خط تیره (-) در سایزهایی مثل <span class="ltr-text">90/90-17</span> معمولاً به ساختار بایاس اشاره دارد؛ در سایزهای رادیال معمولاً حرف <span class="ltr-text">R</span> می‌آید (مثلاً <span class="ltr-text">120/70R17</span>).</li><li>سایزهای قدیمی‌تر مثل <span class="ltr-text">2.75-17</span> نسبت ارتفاع ندارند و عدد اول، عرض به اینچ است.</li><li>لاستیک جلو و عقب اغلب هم‌سایز نیستند؛ هر کدام را جدا بررسی کنید.</li><li>سایز درست را از روی لاستیک فعلی (اگر مطمئن هستید درست بوده)، دفترچه‌ی راهنمای موتور یا برچسب‌های روی موتور بگیرید.</li><li>شاخص بار و رده‌ی سرعت هم روی دیواره نوشته می‌شوند؛ مقدار مناسب را سازنده‌ی موتور تعیین می‌کند. در کاتالوگ نمونه‌ی ما این مقادیر هنوز ثبت نشده‌اند.</li><li>لاستیک بدون تیوب یا تیوب‌دار بودن به نوع رینگ و توصیه‌ی سازنده بستگی دارد.</li></ul>
+        </article>
+        <article id="oil-grade" class="scroll-mt-24 bk-card p-5 sm:p-8">
+          <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-x-3"><span class="speed-stripes" aria-hidden="true"></span>گرید روغن یعنی چه؟</h2>
+          <p class="text-sm leading-8 text-bk-muted mb-4">گرید ویسکوزیته (گران‌روی) روغن چهارزمانه به‌صورت <span class="ltr-text">10W-40</span> نوشته می‌شود:</p>          <table class="w-full mb-4"><tbody><tr class="border-b border-bk-line last:border-0"><td class="py-3 pl-4 font-bold text-bk-cyan whitespace-nowrap"><span class="ltr-text">10W</span></td><td class="py-3 text-sm">«W» از Winter (زمستان) می‌آید. عدد قبل از آن رفتار روغن در سرما را نشان می‌دهد؛ عدد کمتر یعنی در سرما روان‌تر است.</td></tr><tr class="border-b border-bk-line last:border-0"><td class="py-3 pl-4 font-bold text-bk-cyan whitespace-nowrap"><span class="ltr-text">40</span></td><td class="py-3 text-sm">گران‌روی در دمای کار موتور؛ عدد بیشتر یعنی در گرما غلیظ‌تر.</td></tr></tbody></table>          <ul class="text-sm leading-8 text-bk-muted list-disc pr-5 mb-4 space-y-1"><li>گرید مناسب را فقط از دفترچه‌ی راهنمای موتور خود بگیرید؛ «غلیظ‌تر» یا «روان‌تر» بودن به‌خودی‌خود بهتر نیست.</li><li>روغن دوزمانه (2T) معمولاً گرید ویسکوزیته‌ی چندگانه مثل بالا ندارد؛ برای آن به استانداردش نگاه کنید.</li><li>در کاتالوگ، فیلتر «گرید ویسکوزیته» فقط گریدهایی را نشان می‌دهد که واقعاً محصولی با آن ثبت شده است.</li></ul>
+        </article>
+        <article id="oil-standards" class="scroll-mt-24 bk-card p-5 sm:p-8">
+          <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-x-3"><span class="speed-stripes" aria-hidden="true"></span>استانداردهای API و JASO و فرق 2T با 4T</h2>
+          <ul class="text-sm leading-8 text-bk-muted list-disc pr-5 mb-4 space-y-1"><li><b>2T و 4T:</b> روغن موتور دوزمانه و چهارزمانه کاملاً با هم فرق دارند و جایگزین هم نیستند. نوع موتور خود را از دفترچه مطمئن شوید.</li><li><b>API:</b> حروف مثل <span class="ltr-text">SL</span> یا <span class="ltr-text">SM</span> دسته‌ی کیفی روغن برای موتورهای بنزینی را نشان می‌دهند. اینکه کدام دسته برای موتور شما مجاز است در دفترچه آمده است.</li><li><b>JASO (چهارزمانه):</b> <span class="ltr-text">MA</span>، <span class="ltr-text">MA1</span> و <span class="ltr-text">MA2</span> برای موتورسیکلت‌هایی است که کلاچ در حمام روغن دارند؛ <span class="ltr-text">MB</span> برای موتورهایی (مثل بعضی اسکوترهای اتوماتیک) که اصطکاک کمتری لازم دارند.</li><li><b>JASO (دوزمانه):</b> رده‌های <span class="ltr-text">FA</span>، <span class="ltr-text">FB</span>، <span class="ltr-text">FC</span> و <span class="ltr-text">FD</span> برای روغن دوزمانه تعریف شده‌اند.</li><li><b>نوع پایه:</b> معدنی، نیمه‌سنتتیک و تمام‌سنتتیک اشاره به ترکیب پایه‌ی روغن دارند. بازه‌ی تعویض روغن را سازنده‌ی موتور اعلام می‌کند، نه نوع پایه.</li></ul>          <p class="text-sm leading-8 text-bk-muted mb-4">اگر گرید یا استاندارد موتور شما را نمی‌دانید، پیش از خرید با دفترچه‌ی موتور مطابقت دهید یا با پشتیبانی تماس بگیرید.</p>
+        </article>
+        <div class="flex flex-wrap gap-3">
+          <a href="./index.html#finder" class="btn-primary h-11 px-6 text-sm inline-flex">یابنده‌ی محصول مناسب</a>
+          <a href="./tires.html" class="btn-outline h-11 px-6 text-sm inline-flex">لاستیک‌ها</a>
+          <a href="./oils.html" class="btn-outline h-11 px-6 text-sm inline-flex">روغن‌ها</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= فوتر ================= -->
+    <footer id="contact" class="bg-bk-black border-t border-bk-line">
+      <div class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+          <!-- درباره -->
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-x-2 mb-4">
+              <span class="ltr-text text-xl font-bold tracking-[0.18em]">BAIKU</span>
+              <span class="jp-text text-xs text-bk-blue tracking-widest">バイク</span>
+            </div>
+            <p class="text-sm text-bk-muted leading-7 max-w-md mb-5">
+              فروشگاه تخصصی لاستیک و روغن موتور موتورسیکلت با تمرکز بر اطلاعات فنی شفاف و انتخاب آگاهانه.
+            </p>
+            <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-bk-muted">
+              <a href="#" class="hover:text-bk-blue transition">اینستاگرام</a>
+              <a href="#" class="hover:text-bk-blue transition">تلگرام</a>
+              <a href="#" class="hover:text-bk-blue transition">آپارات</a>
+            </div>
+          </div>
+
+          <!-- خدمات مشتریان -->
+          <div>
+            <h3 class="font-bold mb-4">خدمات مشتریان</h3>
+            <ul class="space-y-3 text-sm text-bk-muted">
+              <li><a href="#" class="hover:text-bk-blue transition">سوالات متداول</a></li>
+              <li><a href="#" class="hover:text-bk-blue transition">ضمانت اصالت</a></li>
+              <li><a href="#" class="hover:text-bk-blue transition">شرایط استفاده</a></li>
+              <li><a href="#" class="hover:text-bk-blue transition">حریم خصوصی</a></li>
+            </ul>
+          </div>
+
+          <!-- راهنمای خرید -->
+          <div>
+            <h3 class="font-bold mb-4">راهنمای خرید</h3>
+            <ul class="space-y-3 text-sm text-bk-muted">
+              <li><a href="#" class="hover:text-bk-blue transition">راهنمای انتخاب لاستیک</a></li>
+              <li><a href="#" class="hover:text-bk-blue transition">راهنمای انتخاب روغن</a></li>
+              <li><a href="#" class="hover:text-bk-blue transition">نحوه ثبت سفارش</a></li>
+              <li><a href="#" class="hover:text-bk-blue transition">رویه ارسال</a></li>
+            </ul>
+          </div>
+
+          <!-- تماس -->
+          <div>
+            <h3 class="font-bold mb-4">تماس با ما</h3>
+            <ul class="space-y-3 text-sm text-bk-muted">
+              <!-- اطلاعات تماس نمونه است؛ با اطلاعات واقعی عوض کنید -->
+              <li>تلفن: <span class="ltr-text">021-00000000</span></li>
+              <li>ایمیل: <span class="ltr-text">info@example.com</span></li>
+              <li>ساعت پاسخگویی: ۹ تا ۱۸ (نمونه)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- اعتماد و ارسال -->
+        <ul class="mt-10 pt-6 border-t border-bk-line grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-bk-muted">
+          <li class="flex items-center gap-x-2"><span class="w-1.5 h-1.5 bg-bk-blue" aria-hidden="true"></span>ارسال به سراسر کشور</li>
+          <li class="flex items-center gap-x-2"><span class="w-1.5 h-1.5 bg-bk-blue" aria-hidden="true"></span>پشتیبانی در انتخاب محصول</li>
+          <li class="flex items-center gap-x-2"><span class="w-1.5 h-1.5 bg-bk-blue" aria-hidden="true"></span>پرداخت امن (در نسخه‌ی نهایی)</li>
+        </ul>
+        <p class="mt-6 text-xs text-bk-muted">© BAIKU - نسخه‌ی نمایشی. تمام محصولات و قیمت‌ها نمونه هستند.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/js/guide-page.js"></script>
+  </body>
+</html>

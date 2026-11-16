@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- تصویر موقت روغن موتور: با عکس واقعی جایگزین کنید -->
+  <rect width="400" height="400" fill="#0b1424"/>
+  <path d="M150 120h100v-30a12 12 0 0 0-12-12h-76a12 12 0 0 0-12 12z" fill="#252b33"/>
+  <rect x="175" y="52" width="50" height="28" rx="4" fill="#168bff"/>
+  <path d="M120 140q0-20 30-20h100q30 0 30 20v200q0 18-24 18H144q-24 0-24-18z" fill="#12161c" stroke="#252b33" stroke-width="3"/>
+  <rect x="120" y="200" width="160" height="80" fill="#168bff" fill-opacity="0.9"/>
+  <path d="M120 200l160-30v30z" fill="#00cfff" fill-opacity="0.9"/>
+  <text x="200" y="250" fill="#fff" font-size="26" font-weight="700" font-family="sans-serif" text-anchor="middle">BAIKU</text>
+  <text x="200" y="385" fill="#8b949e" font-size="14" font-family="sans-serif" text-anchor="middle">PLACEHOLDER</text>
+</svg>

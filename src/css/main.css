@@ -1,0 +1,228 @@
+/* فونت وزیرمتن از CDN (باید اولین خط فایل باشد)
+   برای استفاده‌ی محلی: فایل Vazirmatn.woff2 را در src/fonts بگذارید،
+   خط @import بالا را حذف کنید و بلوک @font-face پایین را از کامنت درآورید. */
+@import url("https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css");
+@import "tailwindcss";
+
+/*
+@font-face {
+  font-family: Vazirmatn;
+  src: url(../fonts/Vazirmatn.woff2) format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+*/
+
+/* ---------- رنگ‌ها و فونت برند BAIKU ----------
+   هر رنگ در HTML با نام bk-... استفاده می‌شود، مثلاً bg-bk-black یا text-bk-blue */
+@theme {
+  --font-sans: Vazirmatn, Tahoma, sans-serif;
+
+  --color-bk-black: #080a0d; /* پس‌زمینه اصلی */
+  --color-bk-navy: #101a2b; /* پس‌زمینه بخش‌های دوم */
+  --color-bk-line: #252b33; /* خطوط و حاشیه‌ها */
+  --color-bk-muted: #8b949e; /* متن ثانویه */
+  --color-bk-white: #f5f7fa; /* متن اصلی */
+  --color-bk-blue: #168bff; /* رنگ تأکیدی اصلی */
+  --color-bk-cyan: #00cfff; /* رنگ تأکیدی دوم */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bk-black);
+    color: var(--color-bk-white);
+  }
+  /* حاشیه‌ی فوکوس برای کاربران کیبورد */
+  :focus-visible {
+    outline: 2px solid var(--color-bk-cyan);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------- کامپوننت‌های قابل استفاده‌ی مجدد ---------- */
+
+/* مقادیر فنی انگلیسی مثل 10W-40 و 90/90-17 در متن راست‌چین به‌هم نریزند */
+.ltr-text {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* دکمه‌ی اصلی (آبی) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-bk-blue);
+  color: #fff;
+  font-weight: 700;
+  transition: box-shadow 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: #2f98ff;
+  box-shadow: 0 0 24px rgba(22, 139, 255, 0.45);
+}
+
+/* دکمه‌ی دوم (حاشیه‌دار) */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-bk-blue);
+  color: var(--color-bk-white);
+  font-weight: 700;
+  transition: background-color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background-color: rgba(22, 139, 255, 0.12);
+  border-color: var(--color-bk-cyan);
+}
+
+/* کارت‌ها (محصول، دسته‌بندی) */
+.bk-card {
+  background-color: var(--color-bk-navy);
+  border: 1px solid var(--color-bk-line);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.bk-card:hover {
+  border-color: var(--color-bk-blue);
+  box-shadow: 0 0 28px rgba(22, 139, 255, 0.18);
+}
+
+/* ورودی‌ها */
+.bk-input {
+  width: 100%;
+  height: 2.75rem;
+  background-color: var(--color-bk-black);
+  border: 1px solid var(--color-bk-line);
+  color: var(--color-bk-white);
+  padding-inline: 0.875rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+.bk-input::placeholder {
+  color: var(--color-bk-muted);
+}
+.bk-input:focus {
+  border-color: var(--color-bk-blue);
+}
+
+/* ---------- جزئیات الهام‌گرفته از ژاپن ---------- */
+
+/* الگوی موج (seigaiha) خیلی کم‌رنگ برای پس‌زمینه‌ی بخش‌ها */
+.pattern-wave {
+  background-image:
+    radial-gradient(circle at 50% 100%, transparent 54%, rgba(22, 139, 255, 0.1) 55% 58%, transparent 59%),
+    radial-gradient(circle at 50% 100%, transparent 34%, rgba(22, 139, 255, 0.08) 35% 38%, transparent 39%);
+  background-size: 56px 28px;
+}
+
+/* متن ژاپنی عمودی تزئینی */
+.jp-vertical {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.4em;
+  font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Sans", Meiryo, sans-serif;
+}
+.jp-text {
+  font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+/* خط‌های اریب موتورسپورتی کنار عنوان بخش‌ها */
+.speed-stripes {
+  display: inline-block;
+  width: 2.25rem;
+  height: 0.875rem;
+  background: repeating-linear-gradient(
+    -60deg,
+    var(--color-bk-blue) 0 4px,
+    transparent 4px 9px
+  );
+}
+
+/* ---------- کشوی سبد خرید و پنجره‌ی ورود (panels.js) ---------- */
+body.panel-open {
+  overflow: hidden;
+}
+
+/* ---------- صفحه‌های لیست محصول (فیلترها) ---------- */
+
+/* هر گروه فیلتر یک <details> است که با کلیک باز و بسته می‌شود */
+.filter-group {
+  border-bottom: 1px solid var(--color-bk-line);
+}
+.filter-group:last-child {
+  border-bottom: 0;
+}
+.filter-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.filter-group > summary::-webkit-details-marker {
+  display: none;
+}
+.filter-group > summary::after {
+  content: "+";
+  color: var(--color-bk-blue);
+  font-size: 1.125rem;
+}
+.filter-group[open] > summary::after {
+  content: "−";
+}
+
+/* لیست کشویی مرتب‌سازی */
+.bk-select {
+  height: 2.75rem;
+  background-color: var(--color-bk-black);
+  border: 1px solid var(--color-bk-line);
+  color: var(--color-bk-white);
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  cursor: pointer;
+}
+.bk-select:focus {
+  border-color: var(--color-bk-blue);
+}
+.bk-select option {
+  background-color: var(--color-bk-black);
+}
+
+/* ---------- یابنده‌ی محصول (finder.js) ---------- */
+.finder-tab {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-bk-muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.finder-tab:hover {
+  color: var(--color-bk-white);
+}
+.finder-tab[aria-selected="true"] {
+  color: var(--color-bk-cyan);
+  border-bottom-color: var(--color-bk-blue);
+}
+.bk-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+label > .bk-select {
+  display: block;
+  margin-top: 0.375rem;
+}

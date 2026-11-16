@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- تصویر موقت لاستیک: با عکس واقعی جایگزین کنید -->
+  <rect width="400" height="400" fill="#0b1424"/>
+  <circle cx="200" cy="200" r="150" fill="#12161c" stroke="#252b33" stroke-width="3"/>
+  <g stroke="#2b333d" stroke-width="10" stroke-dasharray="14 10"><circle cx="200" cy="200" r="140" fill="none"/></g>
+  <circle cx="200" cy="200" r="112" fill="#080a0d" stroke="#168bff" stroke-opacity="0.7" stroke-width="3"/>
+  <circle cx="200" cy="200" r="70" fill="none" stroke="#8b949e" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="200" cy="200" r="16" fill="#168bff" fill-opacity="0.8"/>
+  <g stroke="#8b949e" stroke-opacity="0.5" stroke-width="2"><path d="M200 130V90M200 270V310M130 200H90M270 200H310M150 150L125 125M250 250L275 275M250 150L275 125M150 250L125 275"/></g>
+  <text x="200" y="385" fill="#8b949e" font-size="14" font-family="sans-serif" text-anchor="middle">PLACEHOLDER</text>
+</svg>

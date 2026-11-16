@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice">
+  <!-- تصویر موقت هیرو: برای عوض کردن، فایل hero.jpg را کنار این فایل بگذارید و در index.html آدرس را عوض کنید -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080a0d"/><stop offset="0.6" stop-color="#0b1424"/><stop offset="1" stop-color="#101a2b"/></linearGradient>
+    <radialGradient id="glow" cx="0.28" cy="0.5" r="0.5"><stop offset="0" stop-color="#168bff" stop-opacity="0.35"/><stop offset="1" stop-color="#168bff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00cfff" stop-opacity="0"/><stop offset="1" stop-color="#168bff" stop-opacity="0.8"/></linearGradient>
+  </defs>
+  <rect width="1600" height="800" fill="url(#bg)"/>
+  <rect width="1600" height="800" fill="url(#glow)"/>
+  <!-- خورشید طلوع (الهام از پرچم ژاپن) -->
+  <circle cx="450" cy="400" r="250" fill="none" stroke="#168bff" stroke-opacity="0.35" stroke-width="2"/>
+  <circle cx="450" cy="400" r="190" fill="#168bff" fill-opacity="0.07"/>
+  <!-- چرخ -->
+  <g fill="none" stroke="#f5f7fa" stroke-opacity="0.35">
+    <circle cx="450" cy="400" r="160" stroke-width="26" stroke-opacity="0.12"/>
+    <circle cx="450" cy="400" r="120" stroke-width="2"/>
+    <circle cx="450" cy="400" r="40" stroke-width="2"/>
+    <g stroke-width="2"><path d="M450 280V360M450 440V520M330 400H410M490 400H570M365 315L395 345M505 455L535 485M535 315L505 345M395 455L365 485"/></g>
+  </g>
+  <!-- خطوط سرعت -->
+  <g stroke="url(#line)" stroke-width="3" stroke-linecap="round">
+    <path d="M700 330H1500"/><path d="M820 390H1560" stroke-width="2"/><path d="M640 450H1400"/><path d="M900 510H1580" stroke-width="2"/><path d="M760 570H1300" stroke-width="1.5"/>
+  </g>
+  <!-- شبکه‌ی ظریف -->
+  <g stroke="#f5f7fa" stroke-opacity="0.04"><path d="M0 700H1600M0 600H1600M0 500H1600"/><path d="M1000 0V800M1200 0V800M1400 0V800"/></g>
+  <!-- متن ژاپنی تزئینی -->
+  <text x="1450" y="160" fill="#168bff" fill-opacity="0.35" font-size="150" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif" text-anchor="middle">速</text>
+</svg>

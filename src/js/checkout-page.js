@@ -22,7 +22,7 @@ function renderSummary() {
     .map(
       (it) => `
       <li class="flex gap-x-3 py-3 border-b border-bk-line last:border-0">
-        <img src="${escapeHtml(it.image)}" alt="" class="w-14 h-14 object-cover bg-bk-black border border-bk-line shrink-0" />
+        <img src="${escapeHtml(it.image)}" alt="" class="w-14 h-14 object-cover bg-bk-bg border border-bk-line shrink-0" />
         <div class="min-w-0 flex-1">
           <p class="text-sm font-bold">${escapeHtml(it.title)}</p>
           <p class="text-[11px] text-bk-muted"><span class="ltr-text">${escapeHtml(it.spec || "")}</span> · ${formatPrice(it.qty)} عدد</p>
@@ -51,7 +51,7 @@ function showError(name, message) {
   const field = form.elements[name];
   const err = form.querySelector(`[data-error="${name}"]`);
   field.setAttribute("aria-invalid", message ? "true" : "false");
-  field.classList.toggle("border-red-500", Boolean(message));
+  field.classList.toggle("border-bk-red", Boolean(message));
   err.textContent = message || "";
 }
 

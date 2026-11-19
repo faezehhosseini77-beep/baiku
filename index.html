@@ -8,264 +8,140 @@
     <link rel="stylesheet" href="./src/css/output.css" />
   </head>
   <body class="overflow-x-hidden font-sans">
-    <!-- ================= هدر ================= -->
-    <header class="sticky top-0 z-30 w-full border-b border-bk-line bg-bk-black/90 backdrop-blur">
-      <div class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-x-4">
-        <!-- لوگو (راست در حالت RTL) -->
-        <a href="./index.html" class="flex items-center gap-x-2 shrink-0" aria-label="BAIKU - صفحه اصلی">
-          <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="13" stroke="#168BFF" stroke-width="2.5" />
-            <circle cx="16" cy="16" r="5" fill="#168BFF" />
-            <path d="M16 3v6M16 23v6M3 16h6M23 16h6" stroke="#00CFFF" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          <span class="flex flex-col leading-none">
-            <span class="ltr-text text-xl font-bold tracking-[0.18em]">BAIKU</span>
-            <span class="jp-text text-[10px] text-bk-blue mt-1 tracking-widest">バイク</span>
-          </span>
-        </a>
-
-        <!-- منوی اصلی (فقط دسکتاپ) -->
-        <nav class="hidden lg:flex items-center gap-x-8" aria-label="منوی اصلی">
-          <a href="./index.html" class="text-sm font-bold text-bk-blue border-b-2 border-bk-blue py-5" aria-current="page">خانه</a>
-          <a href="./tires.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">لاستیک موتور</a>
-          <a href="./oils.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">روغن موتور</a>
-          <a href="./guide.html" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">راهنمای خرید</a>
-          <a href="#popular" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">پرفروش‌ها</a>
-          <a href="#about" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">درباره BAIKU</a>
-          <a href="#contact" class="text-sm font-bold text-bk-white hover:text-bk-blue transition">تماس با ما</a>
-        </nav>
-
-        <!-- آیکن‌ها (چپ در حالت RTL) -->
-        <div class="flex items-center gap-x-1 sm:gap-x-2">
-          <button type="button" id="search-toggle" class="w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="جستجو" aria-expanded="false" aria-controls="search-bar">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
-          </button>
-          <a href="./wishlist.html" class="relative w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition" aria-label="علاقه‌مندی‌ها">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" /></svg>
-            <span data-wish-count class="hidden absolute top-0 left-0 min-w-4.5 h-4.5 px-1 rounded-full bg-bk-blue text-white text-[10px] font-bold leading-4.5 text-center">0</span>
-          </a>
-          <a href="./compare.html" class="relative hidden sm:flex w-10 h-10 items-center justify-center text-bk-white hover:text-bk-blue transition" aria-label="مقایسه">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h13M16 3l4 4-4 4M17 17H4M8 13l-4 4 4 4" /></svg>
-            <span data-compare-count class="hidden absolute top-0 left-0 min-w-4.5 h-4.5 px-1 rounded-full bg-bk-blue text-white text-[10px] font-bold leading-4.5 text-center">0</span>
-          </a>
-          <button type="button" data-open="login" class="w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="حساب کاربری">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
-          </button>
-          <button type="button" data-open="cart" class="relative w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="سبد خرید">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /><path d="M2 3h3l2.7 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 7H6" /></svg>
-            <!-- تعداد کالاهای سبد؛ panels.js مقدارش را پر می‌کند -->
-            <span data-cart-count class="hidden absolute top-0 left-0 min-w-4.5 h-4.5 px-1 rounded-full bg-bk-blue text-white text-[10px] font-bold leading-4.5 text-center">0</span>
-          </button>
-          <!-- دکمه‌ی منوی موبایل -->
-          <button type="button" id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-bk-white hover:text-bk-blue transition cursor-pointer" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- نوار جستجو (با آیکن ذره‌بین باز و بسته می‌شود) -->
-      <div id="search-bar" class="hidden border-t border-bk-line bg-bk-navy">
-        <form id="search-form" autocomplete="off" class="relative max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-3 flex gap-x-2" role="search">
-          <input id="search-input" type="search" class="bk-input" placeholder="جستجو بر اساس نام، برند، سایز لاستیک (مثلاً 90/90-17) یا گرید روغن (مثلاً 10W-40)" aria-label="جستجو" aria-controls="search-suggest" aria-expanded="false" />
-          <button type="submit" class="btn-primary h-11 px-5 text-sm shrink-0">جستجو</button>
-          <!-- لیست پیشنهادها (search.js پرش می‌کند) -->
-          <div id="search-suggest" class="hidden absolute top-full right-4 left-4 sm:right-6 sm:left-6 lg:right-8 lg:left-8 z-50 max-h-[70vh] overflow-y-auto bg-bk-navy border border-bk-blue/60 shadow-[0_12px_40px_rgba(0,0,0,0.6)]" role="listbox"></div>
-        </form>
-      </div>
-
-      <!-- منوی موبایل -->
-      <nav id="mobile-menu" class="hidden lg:hidden border-t border-bk-line bg-bk-black" aria-label="منوی موبایل">
-        <div class="px-4 py-3 flex flex-col">
-          <a href="./index.html" class="py-3 text-sm font-bold text-bk-blue border-b border-bk-line">خانه</a>
-          <a href="./tires.html" class="py-3 text-sm font-bold border-b border-bk-line">لاستیک موتور</a>
-          <a href="./oils.html" class="py-3 text-sm font-bold border-b border-bk-line">روغن موتور</a>
-          <a href="./guide.html" class="py-3 text-sm font-bold border-b border-bk-line">راهنمای خرید</a>
-          <a href="#popular" class="py-3 text-sm font-bold border-b border-bk-line">پرفروش‌ها</a>
-          <a href="#about" class="py-3 text-sm font-bold border-b border-bk-line">درباره BAIKU</a>
-          <a href="#contact" class="py-3 text-sm font-bold border-b border-bk-line">تماس با ما</a>
-          <a href="./compare.html" class="py-3 text-sm font-bold">مقایسه‌ی محصولات</a>
-        </div>
-      </nav>
-    </header>
+    <!-- هدر و فوتر را src/js/layout.js پر می‌کند (در همه‌ی صفحه‌ها یکسان) -->
+    <header id="site-header"></header>
 
     <main>
-      <!-- ================= هیرو ================= -->
-      <section class="relative w-full min-h-130 sm:min-h-150 lg:min-h-170 flex items-center overflow-hidden" aria-labelledby="hero-title">
-        <!-- برای عوض کردن عکس هیرو فقط src را عوض کنید -->
-        <img src="./src/image/hero.svg" alt="" class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-linear-to-l from-bk-black/90 via-bk-black/60 to-bk-black/10" aria-hidden="true"></div>
-        <div class="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-bk-black to-transparent" aria-hidden="true"></div>
-
-        <!-- متن ژاپنی عمودی تزئینی (دقت · سرعت · اعتماد) -->
-        <p class="jp-vertical hidden md:block absolute top-1/2 -translate-y-1/2 left-6 lg:left-12 text-bk-blue/60 text-sm lg:text-base select-none" aria-hidden="true">精密 · 速度 · 信頼</p>
-
-        <div class="relative max-w-350 w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div class="max-w-2xl">
-            <p class="flex items-center gap-x-3 text-bk-cyan text-xs sm:text-sm font-bold mb-5">
-              <span class="speed-stripes" aria-hidden="true"></span>
-              <span class="jp-text tracking-widest">バイク</span>
-              <span>فروشگاه تخصصی موتورسیکلت</span>
-            </p>
-            <h1 id="hero-title" class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight sm:leading-tight lg:leading-tight mb-5">
-              دقت ژاپنی،<br />
-              <span class="text-bk-blue">زیر هر چرخ</span>
-            </h1>
-            <p class="text-bk-muted text-sm sm:text-base lg:text-lg leading-8 mb-8 max-w-xl">
-              BAIKU مرجع انتخاب لاستیک و روغن موتور است؛ با مشخصات فنی شفاف، سایز و گرید خوانا و انتخاب آگاهانه برای هر موتورسیکلت.
-            </p>
-            <div class="flex flex-col min-[420px]:flex-row gap-3">
-              <a href="./tires.html" class="btn-primary h-12 sm:h-14 px-8 text-sm sm:text-base">خرید لاستیک</a>
-              <a href="./oils.html" class="btn-outline h-12 sm:h-14 px-8 text-sm sm:text-base">خرید روغن موتور</a>
+      <!-- ================= Hero ================= -->
+      <!--
+        تصویر Hero: src/image/hero.jpg (۲۵۷۶×۹۰۶). موتور سمت چپ تصویر است و سمت راست برای متن خالی مانده.
+        - دسکتاپ: تصویر پس‌زمینه‌ی کل بخش است و ارتفاع بخش با نسبت تصویر تغییر می‌کند، پس موتور هیچ‌وقت از بالا و پایین بریده نمی‌شود.
+        - موبایل: تصویر بالا و متن زیر آن قرار می‌گیرد (متن داخل تصویر نیست).
+      -->
+      <section class="relative overflow-hidden bg-bk-bg border-b-2 border-bk-red lg:aspect-[2576/906] lg:min-h-[26rem]" aria-labelledby="hero-title">
+        <img src="./src/image/hero.jpg" alt="موتورسیکلت و سوارکار با نوشته‌ی BAIKU روی پس‌زمینه‌ی خاکستری" width="2576" height="906"
+          class="block w-full h-56 sm:h-72 object-cover object-left lg:absolute lg:inset-0 lg:h-full" fetchpriority="high" />
+        <div class="relative lg:absolute lg:inset-0 lg:flex lg:items-center">
+          <div class="max-w-350 mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
+            <div class="lg:w-1/2">
+              <p class="tag-mini mb-4"><span class="speed-stripes ml-3 align-middle" aria-hidden="true"></span>TIRES · ENGINE OIL · <span class="jp-text">バイク</span></p>
+              <h1 id="hero-title" class="font-fa text-4xl sm:text-5xl lg:text-6xl leading-[1.2]">
+                دقت ژاپنی<br /><span class="underline decoration-bk-red decoration-[6px] underline-offset-[12px]">زیر هر چرخ</span>
+              </h1>
+              <p class="mt-6 text-sm sm:text-base leading-8 max-w-md">
+                لاستیک و روغن موتور با مشخصات فنی شفاف: سایز، گرید و استانداردها را ببینید و آگاهانه انتخاب کنید.
+              </p>
+              <div class="flex flex-wrap gap-3 mt-7">
+                <a href="./tires.html" class="btn-primary h-12 px-7 text-sm sm:text-base">مشاهده‌ی لاستیک‌ها</a>
+                <a href="./oils.html" class="btn-outline h-12 px-7 text-sm sm:text-base">روغن موتور</a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ================= یابنده‌ی محصول مناسب ================= -->
-      <section id="finder" class="scroll-mt-20 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20" aria-labelledby="finder-title">
-        <div class="flex items-center gap-x-3 mb-8">
-          <span class="speed-stripes" aria-hidden="true"></span>
-          <h2 id="finder-title" class="text-xl sm:text-2xl font-bold">محصول مناسب موتورت را پیدا کن</h2>
-        </div>
-
-        <div class="bk-card p-4 sm:p-6">
-          <!-- تب‌ها -->
-          <div class="flex gap-x-1 border-b border-bk-line mb-5 overflow-x-auto" role="tablist" aria-label="روش پیدا کردن محصول">
-            <button type="button" role="tab" data-tab="bike" aria-selected="true" class="finder-tab">بر اساس موتورسیکلت</button>
-            <button type="button" role="tab" data-tab="tire" aria-selected="false" class="finder-tab">بر اساس سایز لاستیک</button>
-            <button type="button" role="tab" data-tab="oil" aria-selected="false" class="finder-tab">بر اساس روغن</button>
+      <!-- ================= محصول مناسب موتورت را پیدا کن (فقط سایز لاستیک) ================= -->
+      <section id="finder" class="bg-bk-surface scroll-mt-20 border-y-2 border-bk-red relative overflow-hidden" aria-labelledby="finder-title">
+        <div class="pattern-wave absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+          <div class="lg:col-span-5">
+            <p class="tag-mini text-bk-fg mb-2">TIRE SIZE FINDER</p>
+            <h2 id="finder-title" class="font-fa text-2xl sm:text-3xl">محصول مناسب موتورت را پیدا کن</h2>
+            <p class="text-sm text-bk-muted mt-2">پهنا، فاق و رینگ را از روی عدد نوشته‌شده روی لاستیک (مثلاً 90/90-17) انتخاب کنید.</p>
           </div>
-
-          <!-- ۱) موتورسیکلت -->
-          <div data-panel="bike" role="tabpanel">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label class="text-xs text-bk-muted">سازنده<select id="f-bike-brand" class="bk-select w-full"></select></label>
-              <label class="text-xs text-bk-muted">مدل<select id="f-bike-model" class="bk-select w-full"></select></label>
-              <label class="text-xs text-bk-muted">سال ساخت<select id="f-bike-year" class="bk-select w-full"></select></label>
-            </div>
-            <div id="f-bike-result" class="mt-4" aria-live="polite"></div>
-          </div>
-
-          <!-- ۲) سایز لاستیک -->
-          <div data-panel="tire" role="tabpanel" hidden>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label class="text-xs text-bk-muted">عرض (میلی‌متر)<select id="f-tire-width" class="bk-select w-full"></select></label>
-              <label class="text-xs text-bk-muted">نسبت ارتفاع<select id="f-tire-aspect" class="bk-select w-full"></select></label>
-              <label class="text-xs text-bk-muted">قطر رینگ (اینچ)<select id="f-tire-rim" class="bk-select w-full"></select></label>
-            </div>
-            <p class="text-xs text-bk-muted mt-3">سایز را از روی دیواره‌ی لاستیک فعلی (مثلاً <span class="ltr-text">90/90-17</span>) یا دفترچه‌ی موتور بخوانید.</p>
-            <div id="f-tire-result" class="mt-4" aria-live="polite"></div>
-          </div>
-
-          <!-- ۳) روغن -->
-          <div data-panel="oil" role="tabpanel" hidden>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <label class="text-xs text-bk-muted">نوع موتور<select id="f-oil-type" class="bk-select w-full"></select></label>
-              <label class="text-xs text-bk-muted">گرید ویسکوزیته<select id="f-oil-visc" class="bk-select w-full"></select></label>
-            </div>
-            <p class="text-xs text-bk-muted mt-3">⚠️ گرید و استاندارد روغن را حتماً از دفترچه‌ی موتور خود تأیید کنید؛ همه‌ی روغن‌ها جایگزین هم نیستند.</p>
-            <div id="f-oil-result" class="mt-4" aria-live="polite"></div>
-          </div>
+          <form id="finder-form" class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-4 gap-3 items-end">
+            <label class="text-xs">پهنا (Width)<select id="f-width" class="bk-select w-full"></select></label>
+            <label class="text-xs">فاق (Aspect Ratio)<select id="f-aspect" class="bk-select w-full"></select></label>
+            <label class="text-xs">رینگ (Rim)<select id="f-rim" class="bk-select w-full"></select></label>
+            <button type="submit" class="btn-primary h-11 text-sm">نمایش محصولات</button>
+          </form>
         </div>
       </section>
+      <!-- نتیجه‌ی فیلتر (finder.js پر می‌کند) -->
+      <div id="f-result" class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8" aria-live="polite"></div>
 
       <!-- ================= دسته‌بندی‌ها ================= -->
       <section id="categories" class="scroll-mt-20 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20" aria-labelledby="categories-title">
         <div class="flex items-center gap-x-3 mb-8">
           <span class="speed-stripes" aria-hidden="true"></span>
-          <h2 id="categories-title" class="text-xl sm:text-2xl font-bold">دسته‌بندی محصولات</h2>
+          <h2 id="categories-title" class="font-fa text-xl sm:text-3xl">دسته‌بندی محصولات</h2>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
           <a href="./tires.html" class="bk-card group relative block overflow-hidden">
             <img src="./src/image/categories/tires.svg" alt="" class="w-full aspect-4/3 object-cover transition duration-500 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-linear-to-t from-bk-black/90 via-bk-black/20 to-transparent" aria-hidden="true"></div>
-            <div class="absolute bottom-0 inset-x-0 p-5">
-              <h3 class="text-lg sm:text-xl font-bold mb-1">لاستیک موتورسیکلت</h3>
-              <p class="text-xs sm:text-sm text-bk-muted">فیلتر بر اساس سایز، رینگ و نوع تیوب</p>
+            <div class="p-3 sm:p-4 border-t-2 border-bk-red flex items-center justify-between gap-x-2">
+              <div><p class="tag-mini text-bk-muted">TIRES</p><h3 class="font-fa text-base sm:text-lg">لاستیک</h3></div>
+              <span class="jp-text text-bk-red text-3xl font-bold leading-none" aria-hidden="true">輪</span>
             </div>
           </a>
           <a href="./oils.html" class="bk-card group relative block overflow-hidden">
             <img src="./src/image/categories/oils.svg" alt="" class="w-full aspect-4/3 object-cover transition duration-500 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-linear-to-t from-bk-black/90 via-bk-black/20 to-transparent" aria-hidden="true"></div>
-            <div class="absolute bottom-0 inset-x-0 p-5">
-              <h3 class="text-lg sm:text-xl font-bold mb-1">روغن موتور</h3>
-              <p class="text-xs sm:text-sm text-bk-muted">فیلتر بر اساس 2T/4T، گرید و استاندارد</p>
+            <div class="p-3 sm:p-4 border-t-2 border-bk-red flex items-center justify-between gap-x-2">
+              <div><p class="tag-mini text-bk-muted">ENGINE OIL</p><h3 class="font-fa text-base sm:text-lg">روغن موتور</h3></div>
+              <span class="jp-text text-bk-red text-3xl font-bold leading-none" aria-hidden="true">油</span>
             </div>
           </a>
-          <!-- سایر مصرفی‌ها: توسعه‌ی آینده، قابل کلیک نیست -->
-          <div class="bk-card relative block overflow-hidden opacity-80" aria-disabled="true">
-            <img src="./src/image/categories/consumables.svg" alt="" class="w-full aspect-4/3 object-cover" />
-            <div class="absolute inset-0 bg-linear-to-t from-bk-black/90 via-bk-black/30 to-transparent" aria-hidden="true"></div>
-            <span class="absolute top-4 right-4 bg-bk-black/80 border border-bk-line text-bk-cyan text-xs font-bold px-3 py-1">به‌زودی</span>
-            <div class="absolute bottom-0 inset-x-0 p-5">
-              <h3 class="text-lg sm:text-xl font-bold mb-1">سایر مصرفی‌های موتور</h3>
-              <p class="text-xs sm:text-sm text-bk-muted">در مراحل بعدی اضافه می‌شود</p>
+          <a href="./parts.html" class="bk-card group relative block overflow-hidden">
+            <img src="./src/image/categories/parts.svg" alt="" class="w-full aspect-4/3 object-cover transition duration-500 group-hover:scale-105" />
+            <div class="p-3 sm:p-4 border-t-2 border-bk-red flex items-center justify-between gap-x-2">
+              <div><p class="tag-mini text-bk-muted">PARTS</p><h3 class="font-fa text-base sm:text-lg">قطعات یدکی موتور</h3></div>
+              <span class="jp-text text-bk-red text-3xl font-bold leading-none" aria-hidden="true">部</span>
             </div>
-          </div>
+          </a>
+          <a href="./accessories.html" class="bk-card group relative block overflow-hidden">
+            <img src="./src/image/categories/accessories.svg" alt="" class="w-full aspect-4/3 object-cover transition duration-500 group-hover:scale-105" />
+            <div class="p-3 sm:p-4 border-t-2 border-bk-red flex items-center justify-between gap-x-2">
+              <div><p class="tag-mini text-bk-muted">ACCESSORIES</p><h3 class="font-fa text-base sm:text-lg">اکسسوری</h3></div>
+              <span class="jp-text text-bk-red text-3xl font-bold leading-none" aria-hidden="true">装</span>
+            </div>
+          </a>
         </div>
       </section>
 
-      <!-- ================= محصولات پرفروش ================= -->
+      <!-- ================= پرفروش‌ها ================= -->
       <section id="popular" class="scroll-mt-20 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-24" aria-labelledby="popular-title">
         <div class="flex flex-wrap items-end justify-between gap-3 mb-8">
           <div class="flex items-center gap-x-3">
             <span class="speed-stripes" aria-hidden="true"></span>
-            <h2 id="popular-title" class="text-xl sm:text-2xl font-bold">محصولات پرفروش</h2>
+            <h2 id="popular-title" class="font-fa text-xl sm:text-3xl">محصولات پرفروش</h2>
           </div>
           <p class="text-xs text-bk-muted border border-bk-line px-3 py-1.5">محصولات، قیمت‌ها و مشخصات این بخش نمونه و نمایشی هستند.</p>
         </div>
-
         <!-- کارت‌ها را main.js از روی src/data می‌سازد -->
         <div id="popular-products" class="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6"></div>
       </section>
 
-      <!-- ================= برندها ================= -->
-      <section id="brands" class="scroll-mt-20 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-24" aria-labelledby="brands-title">
-        <div class="flex flex-wrap items-end justify-between gap-3 mb-8">
-          <div class="flex items-center gap-x-3">
-            <span class="speed-stripes" aria-hidden="true"></span>
-            <h2 id="brands-title" class="text-xl sm:text-2xl font-bold">برندها</h2>
-          </div>
-          <p class="text-xs text-bk-muted border border-bk-line px-3 py-1.5">نام برندها نمونه است و بعداً با برندهای واقعی جایگزین می‌شود.</p>
-        </div>
-        <!-- کارت‌ها را brands.js از روی src/data می‌سازد -->
-        <div id="brands-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6"></div>
-      </section>
-
       <!-- ================= بنرها ================= -->
-      <section class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-24" aria-label="مسیرهای پیشنهادی">
+      <section class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-24" aria-label="پیشنهادها">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          <a href="#finder" class="bk-card group relative block overflow-hidden p-6 sm:p-8 min-h-44">
-            <div class="pattern-wave absolute inset-0 opacity-60" aria-hidden="true"></div>
-            <span class="jp-text absolute -bottom-4 left-4 text-8xl text-bk-blue/15 leading-none select-none" aria-hidden="true">導</span>
+          <a href="#finder" class="bk-card group relative block overflow-hidden p-6 sm:p-8 min-h-48 border-t-4 border-t-bk-red">
+            <span class="font-display ltr-text absolute -bottom-6 left-3 text-8xl text-bk-red/25 leading-none select-none" aria-hidden="true">TIRE</span>
             <div class="relative">
-              <p class="text-xs text-bk-cyan font-bold mb-2">یابنده‌ی محصول</p>
-              <h3 class="text-lg sm:text-xl font-bold leading-8 mb-2">سایز لاستیک یا گرید روغن را انتخاب کنید</h3>
-              <p class="text-sm text-bk-muted leading-7 mb-4 max-w-sm">فقط گزینه‌هایی که واقعاً در کاتالوگ هست نشان داده می‌شود.</p>
-              <span class="btn-primary h-10 px-5 text-sm inline-flex">شروع جستجو</span>
+              <p class="tag-mini text-bk-fg mb-2">SIZE</p>
+              <h3 class="font-fa text-xl sm:text-2xl mb-2">سایز لاستیک را انتخاب کنید</h3>
+              <p class="text-sm text-bk-muted leading-7 mb-5 max-w-sm">فقط سایزهایی که واقعاً در کاتالوگ هست نشان داده می‌شود.</p>
+              <span class="btn-primary h-10 px-5 text-sm">فیلتر سایز</span>
             </div>
           </a>
-          <a href="./guide.html" class="bk-card group relative block overflow-hidden p-6 sm:p-8 min-h-44">
-            <div class="speed-stripes absolute top-6 left-6 opacity-70" aria-hidden="true"></div>
-            <span class="jp-text absolute -bottom-4 left-4 text-8xl text-bk-blue/15 leading-none select-none" aria-hidden="true">学</span>
+          <a href="./oils.html" class="bk-card group relative block overflow-hidden p-6 sm:p-8 min-h-48 border-t-4 border-t-bk-red">
+            <span class="font-display ltr-text absolute -bottom-6 left-3 text-8xl text-bk-red/15 leading-none select-none" aria-hidden="true">OIL</span>
             <div class="relative">
-              <p class="text-xs text-bk-cyan font-bold mb-2">راهنمای خرید</p>
-              <h3 class="text-lg sm:text-xl font-bold leading-8 mb-2">اعداد روی لاستیک و روغن یعنی چه؟</h3>
-              <p class="text-sm text-bk-muted leading-7 mb-4 max-w-sm">خواندن <span class="ltr-text">90/90-17</span> و <span class="ltr-text">10W-40</span> را در چند دقیقه یاد بگیرید.</p>
-              <span class="btn-outline h-10 px-5 text-sm inline-flex">مطالعه‌ی راهنما</span>
+              <p class="tag-mini mb-2">ENGINE OIL</p>
+              <h3 class="font-fa text-xl sm:text-2xl mb-2">روغن موتور</h3>
+              <p class="text-sm leading-7 mb-5 max-w-sm">گرید و استاندارد مناسب را حتماً از دفترچه‌ی راهنمای موتور خود بخوانید.</p>
+              <span class="btn-primary h-10 px-5 text-sm">مشاهده‌ی روغن‌ها</span>
             </div>
           </a>
         </div>
       </section>
 
-      <!-- ================= معرفی برند BAIKU ================= -->
-      <section id="about" class="scroll-mt-20 mt-16 lg:mt-28 bg-bk-navy border-y border-bk-line relative overflow-hidden" aria-labelledby="about-title">
+      <!-- ================= درباره ================= -->
+      <section id="about" class="bg-bk-surface scroll-mt-20 mt-16 lg:mt-24 relative overflow-hidden" aria-labelledby="about-title">
         <div class="pattern-wave absolute inset-0 opacity-60" aria-hidden="true"></div>
         <div class="relative max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
-            <p class="jp-text text-bk-blue text-5xl sm:text-7xl font-bold leading-none mb-4 select-none" aria-hidden="true">バイク</p>
-            <h2 id="about-title" class="text-2xl sm:text-3xl font-bold mb-5">درباره‌ی BAIKU</h2>
+            <p class="jp-text text-bk-red text-5xl sm:text-7xl font-bold leading-none mb-4 select-none" aria-hidden="true">バイク</p>
+            <h2 id="about-title" class="font-fa text-2xl sm:text-4xl mb-5">درباره‌ی BAIKU</h2>
             <p class="text-bk-muted text-sm sm:text-base leading-8 mb-4">
               «بایکو» در زبان ژاپنی یعنی موتورسیکلت. این نام را برای فروشگاهی انتخاب کرده‌ایم که ارزش‌هایش همان ارزش‌های فرهنگ موتورسواری ژاپن است: دقت مهندسی، عملکرد و اعتماد.
             </p>
@@ -273,125 +149,34 @@
               تمرکز BAIKU روی لاستیک و روغن موتور است؛ دو قطعه‌ای که انتخاب نادرستشان مستقیم روی ایمنی و عمر موتور اثر می‌گذارد. به همین دلیل هر محصول با مشخصات فنی کامل و خوانا ارائه می‌شود.
             </p>
           </div>
-
-          <!-- چرا BAIKU -->
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <li class="bk-card p-5">
-              <span class="jp-text text-bk-cyan text-2xl font-bold block mb-3" aria-hidden="true">真</span>
-              <h3 class="font-bold mb-2">اصالت کالا</h3>
+              <span class="jp-text text-bk-red text-2xl font-bold block mb-3" aria-hidden="true">真</span>
+              <h3 class="font-fa text-base mb-2">اصالت کالا</h3>
               <p class="text-xs sm:text-sm text-bk-muted leading-7">تأمین محصول از منابع معتبر و قابل پیگیری.</p>
             </li>
             <li class="bk-card p-5">
-              <span class="jp-text text-bk-cyan text-2xl font-bold block mb-3" aria-hidden="true">確</span>
-              <h3 class="font-bold mb-2">اطلاعات فنی دقیق</h3>
+              <span class="jp-text text-bk-red text-2xl font-bold block mb-3" aria-hidden="true">確</span>
+              <h3 class="font-fa text-base mb-2">اطلاعات فنی دقیق</h3>
               <p class="text-xs sm:text-sm text-bk-muted leading-7">سایز، گرید و استانداردها بر اساس مشخصات سازنده.</p>
             </li>
             <li class="bk-card p-5">
-              <span class="jp-text text-bk-cyan text-2xl font-bold block mb-3" aria-hidden="true">速</span>
-              <h3 class="font-bold mb-2">ارسال سریع</h3>
+              <span class="jp-text text-bk-red text-2xl font-bold block mb-3" aria-hidden="true">速</span>
+              <h3 class="font-fa text-base mb-2">ارسال سریع</h3>
               <p class="text-xs sm:text-sm text-bk-muted leading-7">بسته‌بندی ایمن و ارسال به‌موقع سفارش‌ها.</p>
             </li>
             <li class="bk-card p-5">
-              <span class="jp-text text-bk-cyan text-2xl font-bold block mb-3" aria-hidden="true">導</span>
-              <h3 class="font-bold mb-2">راهنمایی تخصصی</h3>
+              <span class="jp-text text-bk-red text-2xl font-bold block mb-3" aria-hidden="true">導</span>
+              <h3 class="font-fa text-base mb-2">راهنمایی تخصصی</h3>
               <p class="text-xs sm:text-sm text-bk-muted leading-7">اگر مطمئن نیستید چه محصولی لازم دارید، کنارتان هستیم.</p>
             </li>
           </ul>
         </div>
       </section>
-
-      <!-- ================= راهنمای خرید ================= -->
-      <section id="guides" class="scroll-mt-20 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-24 pb-16 lg:pb-24" aria-labelledby="guides-title">
-        <div class="flex items-center gap-x-3 mb-8">
-          <span class="speed-stripes" aria-hidden="true"></span>
-          <h2 id="guides-title" class="text-xl sm:text-2xl font-bold">راهنمای خرید</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-          <a href="./guide.html#tire-size" class="bk-card block p-5">
-            <p class="ltr-text text-bk-cyan font-bold text-lg mb-2">90/90-17</p>
-            <h3 class="font-bold mb-2">سایز لاستیک را چطور بخوانیم؟</h3>
-            <p class="text-sm text-bk-muted leading-7">عرض، نسبت ارتفاع و قطر رینگ؛ و جای پیدا کردن سایز درست.</p>
-          </a>
-          <a href="./guide.html#oil-grade" class="bk-card block p-5">
-            <p class="ltr-text text-bk-cyan font-bold text-lg mb-2">10W-40</p>
-            <h3 class="font-bold mb-2">گرید روغن یعنی چه؟</h3>
-            <p class="text-sm text-bk-muted leading-7">معنی W و دو عدد ویسکوزیته، و اینکه گرید را از کجا بگیریم.</p>
-          </a>
-          <a href="./guide.html#oil-standards" class="bk-card block p-5">
-            <p class="ltr-text text-bk-cyan font-bold text-lg mb-2">API · JASO</p>
-            <h3 class="font-bold mb-2">استانداردها و 2T / 4T</h3>
-            <p class="text-sm text-bk-muted leading-7">فرق MA و MB، و چرا روغن دوزمانه و چهارزمانه جایگزین هم نیستند.</p>
-          </a>
-        </div>
-      </section>
-
     </main>
 
-    <!-- ================= فوتر ================= -->
-    <footer id="contact" class="bg-bk-black border-t border-bk-line">
-      <div class="max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          <!-- درباره -->
-          <div class="lg:col-span-2">
-            <div class="flex items-center gap-x-2 mb-4">
-              <span class="ltr-text text-xl font-bold tracking-[0.18em]">BAIKU</span>
-              <span class="jp-text text-xs text-bk-blue tracking-widest">バイク</span>
-            </div>
-            <p class="text-sm text-bk-muted leading-7 max-w-md mb-5">
-              فروشگاه تخصصی لاستیک و روغن موتور موتورسیکلت با تمرکز بر اطلاعات فنی شفاف و انتخاب آگاهانه.
-            </p>
-            <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-bk-muted">
-              <a href="#" class="hover:text-bk-blue transition">اینستاگرام</a>
-              <a href="#" class="hover:text-bk-blue transition">تلگرام</a>
-              <a href="#" class="hover:text-bk-blue transition">آپارات</a>
-            </div>
-          </div>
+    <footer id="site-footer"></footer>
 
-          <!-- خدمات مشتریان -->
-          <div>
-            <h3 class="font-bold mb-4">خدمات مشتریان</h3>
-            <ul class="space-y-3 text-sm text-bk-muted">
-              <li><a href="#" class="hover:text-bk-blue transition">سوالات متداول</a></li>
-              <li><a href="#" class="hover:text-bk-blue transition">ضمانت اصالت</a></li>
-              <li><a href="#" class="hover:text-bk-blue transition">شرایط استفاده</a></li>
-              <li><a href="#" class="hover:text-bk-blue transition">حریم خصوصی</a></li>
-            </ul>
-          </div>
-
-          <!-- راهنمای خرید -->
-          <div>
-            <h3 class="font-bold mb-4">راهنمای خرید</h3>
-            <ul class="space-y-3 text-sm text-bk-muted">
-              <li><a href="#" class="hover:text-bk-blue transition">راهنمای انتخاب لاستیک</a></li>
-              <li><a href="#" class="hover:text-bk-blue transition">راهنمای انتخاب روغن</a></li>
-              <li><a href="#" class="hover:text-bk-blue transition">نحوه ثبت سفارش</a></li>
-              <li><a href="#" class="hover:text-bk-blue transition">رویه ارسال</a></li>
-            </ul>
-          </div>
-
-          <!-- تماس -->
-          <div>
-            <h3 class="font-bold mb-4">تماس با ما</h3>
-            <ul class="space-y-3 text-sm text-bk-muted">
-              <!-- اطلاعات تماس نمونه است؛ با اطلاعات واقعی عوض کنید -->
-              <li>تلفن: <span class="ltr-text">021-00000000</span></li>
-              <li>ایمیل: <span class="ltr-text">info@example.com</span></li>
-              <li>ساعت پاسخگویی: ۹ تا ۱۸ (نمونه)</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- اعتماد و ارسال -->
-        <ul class="mt-10 pt-6 border-t border-bk-line grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-bk-muted">
-          <li class="flex items-center gap-x-2"><span class="w-1.5 h-1.5 bg-bk-blue" aria-hidden="true"></span>ارسال به سراسر کشور</li>
-          <li class="flex items-center gap-x-2"><span class="w-1.5 h-1.5 bg-bk-blue" aria-hidden="true"></span>پشتیبانی در انتخاب محصول</li>
-          <li class="flex items-center gap-x-2"><span class="w-1.5 h-1.5 bg-bk-blue" aria-hidden="true"></span>پرداخت امن (در نسخه‌ی نهایی)</li>
-        </ul>
-        <p class="mt-6 text-xs text-bk-muted">© BAIKU - نسخه‌ی نمایشی. تمام محصولات و قیمت‌ها نمونه هستند.</p>
-      </div>
-    </footer>
-
-    <!-- فقط یک فایل JS: منو، کارت‌ها، سبد خرید -->
     <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>

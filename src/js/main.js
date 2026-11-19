@@ -4,7 +4,6 @@ import { tires } from "../data/tires.js";
 import { oils } from "../data/oils.js";
 import { productCard, attachCardEvents } from "./product-card.js";
 import { initFinder } from "./finder.js";
-import { initBrands } from "./brands.js";
 
 /* ---------- نمایش پرفروش‌ها ---------- */
 // محصولاتی که در فایل داده popular: true دارند
@@ -12,16 +11,10 @@ const allProducts = [...tires, ...oils];
 const popular = allProducts.filter((p) => p.popular);
 const grid = document.getElementById("popular-products");
 
-function renderPopular() {
-  grid.innerHTML = popular.map(productCard).join("");
-}
-renderPopular();
+grid.innerHTML = popular.map(productCard).join("");
 
-// دکمه‌های «افزودن به سبد» و قلب علاقه‌مندی
-attachCardEvents(grid, allProducts, renderPopular);
+// دکمه‌ی «خرید» کارت‌ها
+attachCardEvents(grid, allProducts);
 
-/* ---------- یابنده‌ی محصول مناسب (تب‌ها و منوهای انتخابی) ---------- */
+/* ---------- فیلتر سایز لاستیک (جلو / عقب) ---------- */
 initFinder();
-
-/* ---------- برندها (از روی داده‌ها ساخته می‌شود) ---------- */
-initBrands();

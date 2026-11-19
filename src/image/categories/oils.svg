@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-  <rect width="800" height="600" fill="#0b1424"/>
-  <circle cx="560" cy="300" r="260" fill="#00cfff" fill-opacity="0.06"/>
-  <path d="M470 190h180v-50a18 18 0 0 0-18-18H488a18 18 0 0 0-18 18z" fill="#252b33"/>
-  <rect x="525" y="82" width="70" height="36" rx="6" fill="#168bff"/>
-  <path d="M430 220q0-30 45-30h170q45 0 45 30v300q0 28-36 28H466q-36 0-36-28z" fill="#12161c" stroke="#252b33" stroke-width="4"/>
-  <rect x="430" y="320" width="260" height="120" fill="#168bff" fill-opacity="0.9"/>
-  <path d="M430 320l260-50v50z" fill="#00cfff" fill-opacity="0.9"/>
-  <text x="560" y="398" fill="#fff" font-size="40" font-weight="700" font-family="sans-serif" text-anchor="middle">BAIKU</text>
-  <text x="90" y="120" fill="#168bff" fill-opacity="0.4" font-size="90" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">油</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img"><rect width="400" height="300" fill="#E4E4E4"/><polygon points="120,0 400,0 400,300 40,300" fill="#880A03"/><polygon points="250,0 400,0 400,300 170,300" fill="#880A03" opacity=".9"/><rect x="120" y="90" width="150" height="170" rx="14" fill="#080808"/><rect x="150" y="60" width="60" height="36" fill="#080808"/><rect x="158" y="44" width="44" height="22" fill="#CECECE"/><path d="M270 120 q50 0 50 40 v50 q0 20 -20 20 h-30" fill="none" stroke="#080808" stroke-width="16"/><rect x="136" y="130" width="118" height="84" fill="#F0F0F0"/><rect x="136" y="130" width="118" height="22" fill="#880A03"/><path d="M195 160 q-16 22 0 34 q16 -12 0 -34z" fill="#080808"/><text x="195" y="236" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="#F0F0F0">10W-40</text></svg>

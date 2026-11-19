@@ -81,16 +81,16 @@ function search(rawQuery) {
 
 /* ---------- ساخت HTML پیشنهادها ---------- */
 const row = (href, inner) =>
-  `<a href="${href}" data-sug class="flex items-center gap-x-3 px-3 py-2.5 hover:bg-bk-blue/10 focus:bg-bk-blue/10 data-[active=true]:bg-bk-blue/15 outline-none">${inner}</a>`;
+  `<a href="${href}" data-sug class="flex items-center gap-x-3 px-3 py-2.5 hover:bg-bk-red/10 focus:bg-bk-red/10 data-[active=true]:bg-bk-red/15 outline-none">${inner}</a>`;
 
 function productRow(p) {
   const href = `./product.html?id=${encodeURIComponent(p.id)}`; // صفحه‌ی جزئیات محصول
   return row(
     href,
-    `<img src="${escapeHtml(p.image)}" alt="" class="w-11 h-11 object-cover bg-bk-black shrink-0" />
+    `<img src="${escapeHtml(p.image)}" alt="" class="w-11 h-11 object-cover bg-bk-bg shrink-0" />
      <span class="min-w-0 flex-1">
        <span class="block text-sm font-bold truncate">${escapeHtml(p.name)}</span>
-       <span class="block text-xs text-bk-muted"><span class="ltr-text text-bk-cyan">${escapeHtml(getSpec(p))}</span> · ${escapeHtml(p.brand)}</span>
+       <span class="block text-xs text-bk-muted"><span class="ltr-text text-bk-fg">${escapeHtml(getSpec(p))}</span> · ${escapeHtml(p.brand)}</span>
      </span>
      <span class="text-xs text-bk-muted shrink-0">${formatPrice(p.price)} تومان</span>`
   );
@@ -99,8 +99,8 @@ function productRow(p) {
 function techRow(t) {
   return row(
     `${PAGE[t.category]}?q=${encodeURIComponent(t.value)}`,
-    `<span class="w-11 h-11 flex items-center justify-center border border-bk-line text-bk-blue text-xs shrink-0">${t.category === "oil" ? "گرید" : "سایز"}</span>
-     <span class="flex-1 text-sm"><span class="ltr-text font-bold text-bk-cyan">${escapeHtml(t.value)}</span> <span class="text-xs text-bk-muted">در ${LABEL[t.category]}</span></span>`
+    `<span class="w-11 h-11 flex items-center justify-center border border-bk-line text-bk-fg text-xs shrink-0">${t.category === "oil" ? "گرید" : "سایز"}</span>
+     <span class="flex-1 text-sm"><span class="ltr-text font-bold text-bk-fg">${escapeHtml(t.value)}</span> <span class="text-xs text-bk-muted">در ${LABEL[t.category]}</span></span>`
   );
 }
 
@@ -129,7 +129,7 @@ function render(box, rawQuery) {
     .filter((c) => counts[c] > 0)
     .map(
       (c) =>
-        `<a href="${PAGE[c]}?q=${encodeURIComponent(rawQuery)}" data-sug class="flex-1 text-center text-xs py-2.5 border border-bk-line hover:border-bk-blue data-[active=true]:border-bk-blue">همه‌ی نتایج ${LABEL[c]} (${formatPrice(counts[c])})</a>`
+        `<a href="${PAGE[c]}?q=${encodeURIComponent(rawQuery)}" data-sug class="flex-1 text-center text-xs py-2.5 border border-bk-line hover:border-bk-red data-[active=true]:border-bk-red">همه‌ی نتایج ${LABEL[c]} (${formatPrice(counts[c])})</a>`
     )
     .join("");
   html += `<div class="flex gap-x-2 p-3 border-t border-bk-line mt-2">${more}</div>`;

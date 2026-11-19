@@ -1,30 +1,41 @@
-/* فونت وزیرمتن از CDN (باید اولین خط فایل باشد)
-   برای استفاده‌ی محلی: فایل Vazirmatn.woff2 را در src/fonts بگذارید،
-   خط @import بالا را حذف کنید و بلوک @font-face پایین را از کامنت درآورید. */
+/* ---------- فونت‌ها (از CDN) ----------
+   باید اولین خط‌های فایل باشند.
+   - Vazirmatn : متن عادی
+   - Anton     : تیترهای لاتین (فشرده و ضخیم)
+   - Estedad   : تیترهای فارسی (وزن ExtraBold 800). اگر این آدرس باز نشد، تیترها خودکار با Vazirmatn سیاه نمایش داده می‌شوند.
+   برای فونت محلی: فایل‌ها را در src/fonts بگذارید، @import ها را بردارید و بلوک @font-face پایین را از کامنت دربیاورید. */
 @import url("https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/anton@5/latin-400.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/estedad@5/arabic-800.css");
 @import "tailwindcss";
 
 /*
-@font-face {
-  font-family: Vazirmatn;
-  src: url(../fonts/Vazirmatn.woff2) format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
+@font-face { font-family: Vazirmatn; src: url(../fonts/Vazirmatn.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: Estedad;   src: url(../fonts/Estedad-ExtraBold.woff2) format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: Anton;     src: url(../fonts/Anton-Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
 */
 
-/* ---------- رنگ‌ها و فونت برند BAIKU ----------
-   هر رنگ در HTML با نام bk-... استفاده می‌شود، مثلاً bg-bk-black یا text-bk-blue */
-@theme {
+/* ---------- رنگ‌های برند BAIKU (پالت نهایی) ----------
+   همه‌ی رنگ‌های سایت فقط از همین‌جا می‌آیند؛ برای عوض کردن پالت فقط این بلوک را ویرایش کنید.
+     bk-bg       #C8C8C8  خاکستری اصلی و غالب (پس‌زمینه‌ی صفحه)
+     bk-surface  #CACACA  خاکستری مکمل (کارت‌ها، هدر، فوتر، سکشن‌های ثانویه)
+     bk-fg       #080808  رنگ همه‌ی نوشته‌ها
+     bk-red      #880A03  رنگ تأکیدی برند (دکمه‌ها، خطوط، جزئیات، hover)
+     bk-white    #FFFFFF  فقط برای جزئیات محدود (متن روی دکمه‌ی قرمز، کادر ورودی‌ها)
+   مثال در HTML: bg-bk-surface text-bk-fg border-bk-line bg-bk-red */
+@theme static {
   --font-sans: Vazirmatn, Tahoma, sans-serif;
 
-  --color-bk-black: #080a0d; /* پس‌زمینه اصلی */
-  --color-bk-navy: #101a2b; /* پس‌زمینه بخش‌های دوم */
-  --color-bk-line: #252b33; /* خطوط و حاشیه‌ها */
-  --color-bk-muted: #8b949e; /* متن ثانویه */
-  --color-bk-white: #f5f7fa; /* متن اصلی */
-  --color-bk-blue: #168bff; /* رنگ تأکیدی اصلی */
-  --color-bk-cyan: #00cfff; /* رنگ تأکیدی دوم */
+  --color-bk-bg: #c8c8c8;
+  --color-bk-surface: #cacaca;
+  --color-bk-fg: #080808;
+  --color-bk-muted: #080808; /* همه‌ی نوشته‌ها مشکی‌اند؛ سلسله‌مراتب با اندازه و وزن ساخته می‌شود */
+  --color-bk-line: rgb(8 8 8 / 0.28); /* خطوط و حاشیه‌ها: مشکی کم‌رنگ، چون دو خاکستری تقریباً هم‌رنگ‌اند */
+
+  --color-bk-red: #880a03;
+  --color-bk-red-dark: #5e0702; /* سایه‌ی تیره‌تر همان قرمز، فقط برای hover */
+  --color-bk-ink: #080808;
+  --color-bk-white: #ffffff;
 }
 
 @layer base {
@@ -32,17 +43,44 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-bk-black);
-    color: var(--color-bk-white);
+    background-color: var(--color-bk-bg);
+    color: var(--color-bk-fg);
   }
-  /* حاشیه‌ی فوکوس برای کاربران کیبورد */
   :focus-visible {
-    outline: 2px solid var(--color-bk-cyan);
+    outline: 2px solid var(--color-bk-red);
     outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--color-bk-red);
+    color: #fff;
   }
 }
 
-/* ---------- کامپوننت‌های قابل استفاده‌ی مجدد ---------- */
+/* ---------- تایپوگرافی پوستری ---------- */
+
+/* تیتر درشت: حروف لاتین Anton، حروف فارسی Estedad ExtraBold (یا Vazirmatn سیاه) */
+.font-display {
+  font-family: Anton, Estedad, Vazirmatn, Tahoma, sans-serif;
+  font-weight: 800;
+  font-synthesis-weight: none;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+/* تیتر فارسی خالص */
+.font-fa {
+  font-family: Estedad, Vazirmatn, Tahoma, sans-serif;
+  font-weight: 800;
+  line-height: 1.3;
+}
+/* متن ریز و صنعتی شبیه پوستر (برچسب‌های کوچک لاتین) */
+.tag-mini {
+  font-family: Anton, Vazirmatn, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- کامپوننت‌ها ---------- */
 
 /* مقادیر فنی انگلیسی مثل 10W-40 و 90/90-17 در متن راست‌چین به‌هم نریزند */
 .ltr-text {
@@ -51,21 +89,22 @@
   display: inline-block;
 }
 
-/* دکمه‌ی اصلی (آبی) */
+/* دکمه‌ی اصلی (قرمز) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--color-bk-blue);
+  background-color: var(--color-bk-red);
   color: #fff;
-  font-weight: 700;
-  transition: box-shadow 0.2s, background-color 0.2s;
+  font-weight: 800;
+  border: 2px solid var(--color-bk-red);
+  transition: background-color 0.2s, border-color 0.2s;
   cursor: pointer;
 }
 .btn-primary:hover {
-  background-color: #2f98ff;
-  box-shadow: 0 0 24px rgba(22, 139, 255, 0.45);
+  background-color: var(--color-bk-red-dark);
+  border-color: var(--color-bk-red-dark);
 }
 
 /* دکمه‌ی دوم (حاشیه‌دار) */
@@ -74,57 +113,100 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border: 1px solid var(--color-bk-blue);
-  color: var(--color-bk-white);
-  font-weight: 700;
-  transition: background-color 0.2s, border-color 0.2s;
+  border: 2px solid var(--color-bk-fg);
+  color: var(--color-bk-fg);
+  font-weight: 800;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
 }
 .btn-outline:hover {
-  background-color: rgba(22, 139, 255, 0.12);
-  border-color: var(--color-bk-cyan);
+  background-color: var(--color-bk-red);
+  border-color: var(--color-bk-red);
+  color: #fff;
 }
 
-/* کارت‌ها (محصول، دسته‌بندی) */
+/* کارت‌ها */
 .bk-card {
-  background-color: var(--color-bk-navy);
+  background-color: var(--color-bk-surface);
   border: 1px solid var(--color-bk-line);
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  box-shadow: 0 2px 8px rgba(8, 8, 8, 0.08);
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 .bk-card:hover {
-  border-color: var(--color-bk-blue);
-  box-shadow: 0 0 28px rgba(22, 139, 255, 0.18);
+  border-color: var(--color-bk-red);
+  box-shadow: 0 10px 28px rgba(8, 8, 8, 0.18);
 }
 
 /* ورودی‌ها */
 .bk-input {
   width: 100%;
   height: 2.75rem;
-  background-color: var(--color-bk-black);
+  background-color: var(--color-bk-white);
   border: 1px solid var(--color-bk-line);
-  color: var(--color-bk-white);
+  color: var(--color-bk-fg);
   padding-inline: 0.875rem;
   font-size: 0.875rem;
   outline: none;
 }
 .bk-input::placeholder {
-  color: var(--color-bk-muted);
+  color: var(--color-bk-fg);
+  opacity: 0.55;
 }
 .bk-input:focus {
-  border-color: var(--color-bk-blue);
+  border-color: var(--color-bk-red);
 }
 
-/* ---------- جزئیات الهام‌گرفته از ژاپن ---------- */
+/* لیست کشویی */
+.bk-select {
+  height: 2.75rem;
+  background-color: var(--color-bk-white);
+  border: 1px solid var(--color-bk-line);
+  color: var(--color-bk-fg);
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  cursor: pointer;
+}
+.bk-select:focus {
+  border-color: var(--color-bk-red);
+}
+.bk-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.bk-select option {
+  background-color: var(--color-bk-white);
+  color: var(--color-bk-fg);
+}
+label > .bk-select {
+  display: block;
+  margin-top: 0.375rem;
+}
 
-/* الگوی موج (seigaiha) خیلی کم‌رنگ برای پس‌زمینه‌ی بخش‌ها */
-.pattern-wave {
+/* ---------- جزئیات الهام‌گرفته از ژاپن و موتورسواری ---------- */
+
+/* بافت ملایم خاکستری برای Hero و بخش‌های ویژه (فقط دو خاکستری پالت) */
+.bg-concrete {
+  background-color: var(--color-bk-bg);
   background-image:
-    radial-gradient(circle at 50% 100%, transparent 54%, rgba(22, 139, 255, 0.1) 55% 58%, transparent 59%),
-    radial-gradient(circle at 50% 100%, transparent 34%, rgba(22, 139, 255, 0.08) 35% 38%, transparent 39%);
-  background-size: 56px 28px;
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    linear-gradient(135deg, var(--color-bk-surface) 0%, var(--color-bk-bg) 100%);
 }
 
-/* متن ژاپنی عمودی تزئینی */
+/* الگوی خطوط حرکتی خیلی کم‌رنگ برای بخش‌های ویژه */
+.pattern-wave {
+  background-image: repeating-linear-gradient(-60deg, rgba(136, 10, 3, 0.09) 0 2px, transparent 2px 22px);
+}
+
+/* خط‌های اریب کنار عنوان بخش‌ها */
+.speed-stripes {
+  display: inline-block;
+  width: 2.25rem;
+  height: 0.875rem;
+  background: repeating-linear-gradient(-60deg, var(--color-bk-red) 0 4px, transparent 4px 9px);
+}
+
+/* متن ژاپنی */
 .jp-vertical {
   writing-mode: vertical-rl;
   letter-spacing: 0.4em;
@@ -134,26 +216,17 @@
   font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Sans", Meiryo, sans-serif;
 }
 
-/* خط‌های اریب موتورسپورتی کنار عنوان بخش‌ها */
-.speed-stripes {
-  display: inline-block;
-  width: 2.25rem;
-  height: 0.875rem;
-  background: repeating-linear-gradient(
-    -60deg,
-    var(--color-bk-blue) 0 4px,
-    transparent 4px 9px
-  );
-}
-
 /* ---------- کشوی سبد خرید و پنجره‌ی ورود (panels.js) ---------- */
 body.panel-open {
   overflow: hidden;
 }
 
-/* ---------- صفحه‌های لیست محصول (فیلترها) ---------- */
+/* ---------- منوی بازشونده‌ی دسته‌بندی (layout.js) ---------- */
+.dropdown-panel[hidden] {
+  display: none;
+}
 
-/* هر گروه فیلتر یک <details> است که با کلیک باز و بسته می‌شود */
+/* ---------- صفحه‌های لیست محصول (فیلترها) ---------- */
 .filter-group {
   border-bottom: 1px solid var(--color-bk-line);
 }
@@ -175,54 +248,9 @@ body.panel-open {
 }
 .filter-group > summary::after {
   content: "+";
-  color: var(--color-bk-blue);
+  color: var(--color-bk-red);
   font-size: 1.125rem;
 }
 .filter-group[open] > summary::after {
   content: "−";
-}
-
-/* لیست کشویی مرتب‌سازی */
-.bk-select {
-  height: 2.75rem;
-  background-color: var(--color-bk-black);
-  border: 1px solid var(--color-bk-line);
-  color: var(--color-bk-white);
-  padding-inline: 0.75rem;
-  font-size: 0.875rem;
-  outline: none;
-  cursor: pointer;
-}
-.bk-select:focus {
-  border-color: var(--color-bk-blue);
-}
-.bk-select option {
-  background-color: var(--color-bk-black);
-}
-
-/* ---------- یابنده‌ی محصول (finder.js) ---------- */
-.finder-tab {
-  padding: 0.75rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--color-bk-muted);
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-}
-.finder-tab:hover {
-  color: var(--color-bk-white);
-}
-.finder-tab[aria-selected="true"] {
-  color: var(--color-bk-cyan);
-  border-bottom-color: var(--color-bk-blue);
-}
-.bk-select:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-label > .bk-select {
-  display: block;
-  margin-top: 0.375rem;
 }

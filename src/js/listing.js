@@ -44,8 +44,8 @@ export function initListing({ products, groups, searchText }) {
             const count = products.filter((p) => String(g.get(p)) === v).length;
             const text = escapeHtml(g.format ? g.format(v) : v);
             return `
-          <label class="flex items-center gap-x-2 py-1.5 text-sm cursor-pointer hover:text-bk-cyan transition">
-            <input type="checkbox" data-group="${g.key}" value="${escapeHtml(v)}" class="accent-bk-blue w-4 h-4 shrink-0" />
+          <label class="flex items-center gap-x-2 py-1.5 text-sm cursor-pointer hover:underline hover:decoration-bk-red hover:decoration-2 hover:underline-offset-4 transition">
+            <input type="checkbox" data-group="${g.key}" value="${escapeHtml(v)}" class="accent-bk-red w-4 h-4 shrink-0" />
             <span>${g.ltr ? `<span class="ltr-text">${text}</span>` : text}</span>
             <span class="ms-auto text-xs text-bk-muted">${formatPrice(count)}</span>
           </label>`;
@@ -72,8 +72,8 @@ export function initListing({ products, groups, searchText }) {
     <details class="filter-group" open>
       <summary>موجودی</summary>
       <div class="pb-3">
-        <label class="flex items-center gap-x-2 py-1.5 text-sm cursor-pointer hover:text-bk-cyan transition">
-          <input name="stock" type="checkbox" class="accent-bk-blue w-4 h-4 shrink-0" />
+        <label class="flex items-center gap-x-2 py-1.5 text-sm cursor-pointer hover:underline hover:decoration-bk-red hover:decoration-2 hover:underline-offset-4 transition">
+          <input name="stock" type="checkbox" class="accent-bk-red w-4 h-4 shrink-0" />
           <span>فقط کالاهای موجود</span>
         </label>
       </div>
@@ -185,8 +185,8 @@ export function initListing({ products, groups, searchText }) {
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // «افزودن به سبد» و علاقه‌مندی روی کارت‌ها
-  attachCardEvents(grid, products, apply);
+  // دکمه‌ی «خرید» روی کارت‌ها
+  attachCardEvents(grid, products);
 
   // اگر آدرس صفحه ?q=... داشت (از جستجوی سراسری یا یابنده‌ی سازگاری) در کادر جستجو گذاشته شود
   const params = new URLSearchParams(location.search);
